@@ -330,8 +330,20 @@ bot.command('pending', async (ctx) => {
     );
   }
 });
+import express from "express";
+
+const app = express();
+app.get("/", (req, res) => {
+  res.send("AMU Vent Bot is running 🚀");
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🌐 Web server running on port ${PORT}`);
+});
 
 // ---------- Start ----------
 bot.launch().then(() => console.log('🚀 Bot is live!'));
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
+
