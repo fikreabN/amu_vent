@@ -16,6 +16,17 @@ if (!BOT_TOKEN || !ADMIN_ID || !CHANNEL_ID || !process.env.MONGODB_URI) {
   process.exit(1);
 }
 
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Bot is running!");
+});
+
+app.listen(3000, () => {
+  console.log("Server is ready on port 3000");
+});
+
 // ---------- MongoDB Connection ----------
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ Connected to MongoDB'))
@@ -330,20 +341,11 @@ bot.command('pending', async (ctx) => {
     );
   }
 });
-import express from "express";
 
-const app = express();
-app.get("/", (req, res) => {
-  res.send("AMU Vent Bot is running 🚀");
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🌐 Web server running on port ${PORT}`);
-});
 
 // ---------- Start ----------
 bot.launch().then(() => console.log('🚀 Bot is live!'));
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
+
 
