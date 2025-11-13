@@ -2,9 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "AMU Vent bot backend",
-  "main": "bot.js",
+  "main": "src/bot/bot.js",
   "scripts": {
-    "start": "node bot.js"
+  "start": "node src/bot/bot.js"
+}
+
   },
   "keywords": [],
   "author": "",
