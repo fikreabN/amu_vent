@@ -5,8 +5,9 @@ app.get("/", (req, res) => {
   res.send("Bot is running!");
 });
 
-app.listen(3000, () => {
-  console.log("Server is ready on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("Server is running on port " + PORT);
 });
 
 require('dotenv').config();
@@ -349,6 +350,7 @@ bot.command('pending', async (ctx) => {
 bot.launch().then(() => console.log('🚀 Bot is live!'));
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
+
 
 
 
